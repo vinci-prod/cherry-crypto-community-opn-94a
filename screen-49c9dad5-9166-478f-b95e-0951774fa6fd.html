@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cherry-Crypto-Community-Onboarding</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/x-icon" href=>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <script>
+
+    window.addEventListener('load', async () => {
+        const ignore = ["WEB3_CONNECT_MODAL_ID", "template", "inputNext", "eth", "sol", "error-text", "discord", "twitter", "linkedTwitter", "linkedDiscord", "but", "complete"];
+        var allElements = document.querySelectorAll('*[id]');
+        for (var i = 0, n = allElements.length; i < n; ++i) {
+        var el = allElements[i];
+        if (!ignore.includes(el.id)) {
+            console.log(el.tagName)
+            if (el.id && el.tagName === "BUTTON") {
+                document.querySelector("#" + el.id).addEventListener("click", addUserDecision);
+            }
+        }
+        }
+        init(); 
+        if(document.querySelector("#eth") !== null){
+            document.querySelector("#eth").addEventListener("click", onConnect);
+        }
+        if(document.querySelector("#inputNext") !== null){
+            document.querySelector("#inputNext").addEventListener("click", checkUserInput);
+        }
+        if(document.querySelector("#sol") !== null){
+            document.querySelector("#sol").addEventListener("click", onSolConnect);
+        }
+        if(document.querySelector("#discord") !== null){
+            document.querySelector("#discord").addEventListener("click", openPopupD);
+        }
+        if(document.querySelector("#twitter") !== null){
+            document.querySelector("#twitter").addEventListener("click", openPopupT);
+        }
+        if(document.querySelector("#complete") !== null){
+            addxptopath();
+        }
+        
+    });
+    </script>
+    
+    <script>
+    window.addEventListener('load', async () => {
+        if(document.getElementById('inputNext')){
+            var popupTick = setInterval(function () {
+                let inputs = document.getElementsByClassName('required');
+                let btn =  document.getElementById('inputNext');
+                let isValid = true;
+
+                for (var i = 0; i < inputs.length; i++){
+                    let changedInput = inputs[i];
+                    if (changedInput.value.trim() === "" || changedInput.value === null){
+                        isValid = false;
+                        break;
+                    }
+                }
+                if(document.querySelector("#linkedDiscord") !== null){
+                    const elem = document.querySelector("#linkedDiscord");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+                if(document.querySelector("#linkedTwitter") !== null){
+                    const elem = document.querySelector("#linkedTwitter");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+
+                btn.disabled = !isValid;
+            }, 1000);
+        }
+    });
+    </script>
+</head>
+    <body>
+        <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+        <script type="text/javascript" src="js/index.js"></script> 
+        <div id="template" class="InputTemplatesRootRoot baseTop  baseTop1 "><img alt="background" style="background-image:url(https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fcherry-crypto-community-opn-94a%2Fscreen-49c9dad5-9166-478f-b95e-0951774fa6fd%2Flogo.png?alt=media&amp;token=fde1b872-ac02-4256-bda0-c85246045aa1)" src="https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fcherry-crypto-community-opn-94a%2Fscreen-49c9dad5-9166-478f-b95e-0951774fa6fd%2Flogo.png?alt=media&amp;token=fde1b872-ac02-4256-bda0-c85246045aa1" class="InputBrandLogo1 image_ButtonsTemplate"/><div class="InputFlexColumn inputFlexColumn col1"><div class="InputFlexColumn4 inputFlexColumn"><div class="InputFlexColumn1"><div class="InputFlexColumn2"><div class="InputText1 title">Please provide us with some information</div><div class="InputFlexColumn3 inputFlexColumn3"><div class="InputText2 title">What&#x27;s your name?</div><input id="name" class="required InputTextbox inputTextbox required" placeholder="What&#x27;s your name?"/></div><div class="InputFlexColumn3 inputFlexColumn3"><div class="InputText2 title">What&#x27;s your e-mail?</div><input id="email@email.com" class="required InputTextbox inputTextbox required" placeholder="What&#x27;s your e-mail?"/></div><div class="InputFlexColumn3 inputFlexColumn3"><div class="InputText2 title">Can we send you e-mails?</div><select id="yes" class="Selectinput selectInputPreview"><option value="-">-</option><option value="Yes">Yes</option><option value="No">No</option></select></div><div class="InputFlexColumn3 inputFlexColumn3"><div class="InputText2 title">How much time a week can you contribute?</div><select id="10h/week" class="Selectinput selectInputPreview"><option value="-">-</option><option value="10h/week">10h/week</option><option value="20h/week">20h/week</option><option value="30h/week">30h/week</option><option value="40h/week">40h/week</option></select></div></div></div></div><div class="InputFlexRow1 row2"><a href="condition-e4aa02d5-5730-41bc-a019-fae00076a4a4.html"><button style="background-color:#fd2064" class="InputLastWeek4 buttonContent">Back</button></a><a href="screen-7e1b651e-9ea5-43c1-bb92-21461a93e3e5"><button style="background-color:#fd2064" class="InputLastWeek4 buttonContent" data-href="screen-7e1b651e-9ea5-43c1-bb92-21461a93e3e5" id="inputNext">Complete</button></a></div></div></div>
+    </body>
+</html>
