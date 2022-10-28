@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cherry-Crypto-Community-Onboarding</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/x-icon" href=>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <script>
+
+    window.addEventListener('load', async () => {
+        const ignore = ["WEB3_CONNECT_MODAL_ID", "template", "inputNext", "eth", "sol", "error-text", "discord", "twitter", "linkedTwitter", "linkedDiscord", "but", "complete"];
+        var allElements = document.querySelectorAll('*[id]');
+        for (var i = 0, n = allElements.length; i < n; ++i) {
+        var el = allElements[i];
+        if (!ignore.includes(el.id)) {
+            console.log(el.tagName)
+            if (el.id && el.tagName === "BUTTON") {
+                document.querySelector("#" + el.id).addEventListener("click", addUserDecision);
+            }
+        }
+        }
+        init(); 
+        if(document.querySelector("#eth") !== null){
+            document.querySelector("#eth").addEventListener("click", onConnect);
+        }
+        if(document.querySelector("#inputNext") !== null){
+            document.querySelector("#inputNext").addEventListener("click", checkUserInput);
+        }
+        if(document.querySelector("#sol") !== null){
+            document.querySelector("#sol").addEventListener("click", onSolConnect);
+        }
+        if(document.querySelector("#discord") !== null){
+            document.querySelector("#discord").addEventListener("click", openPopupD);
+        }
+        if(document.querySelector("#twitter") !== null){
+            document.querySelector("#twitter").addEventListener("click", openPopupT);
+        }
+        if(document.querySelector("#complete") !== null){
+            addxptopath();
+        }
+        
+    });
+    </script>
+    
+    <script>
+    window.addEventListener('load', async () => {
+        if(document.getElementById('inputNext')){
+            var popupTick = setInterval(function () {
+                let inputs = document.getElementsByClassName('required');
+                let btn =  document.getElementById('inputNext');
+                let isValid = true;
+
+                for (var i = 0; i < inputs.length; i++){
+                    let changedInput = inputs[i];
+                    if (changedInput.value.trim() === "" || changedInput.value === null){
+                        isValid = false;
+                        break;
+                    }
+                }
+                if(document.querySelector("#linkedDiscord") !== null){
+                    const elem = document.querySelector("#linkedDiscord");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+                if(document.querySelector("#linkedTwitter") !== null){
+                    const elem = document.querySelector("#linkedTwitter");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+
+                btn.disabled = !isValid;
+            }, 1000);
+        }
+    });
+    </script>
+</head>
+    <body>
+        <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+        <script type="text/javascript" src="js/index.js"></script> 
+        <div id="template" class="ConnectWGradienttextureRootRoot  baseTop  baseTop1"><img alt="background" style="background-image:url(https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fcherry-crypto-community-opn-94a%2Fscreen-49c9dad5-9166-478f-b95e-0951774fa6fd%2Flogo.png?alt=media&amp;token=d6143138-87ac-461e-a6e2-898579233336)" src="https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fcherry-crypto-community-opn-94a%2Fscreen-49c9dad5-9166-478f-b95e-0951774fa6fd%2Flogo.png?alt=media&amp;token=d6143138-87ac-461e-a6e2-898579233336" class="image_ButtonsTemplate InputBrandLogo1 "/><div class="InputFlexColumn inputFlexColumn  col1"><div class="ConnectWCardsvinciOnboarding connectWCardsvinciOnboarding"><img alt="background" style="background-image:url(https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fcherry-crypto-community-opn-94a%2Fscreen-49c9dad5-9166-478f-b95e-0951774fa6fd%2Flittle_logo.png?alt=media&amp;token=fbf8cb54-31ba-4e55-aaca-6a9e93b3c918)" src="https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fcherry-crypto-community-opn-94a%2Fscreen-49c9dad5-9166-478f-b95e-0951774fa6fd%2Flittle_logo.png?alt=media&amp;token=fbf8cb54-31ba-4e55-aaca-6a9e93b3c918" class="ConnectWLogo connectWLogo"/><div class="ConnectWFlexColumn"><div class="ConnectWBody"><div class="ConnectWText1 title">Connect your wallet to get access.</div><div class="ConnectWParagraph paragP"></div></div><div class="ConnectWParagraph1 paragP">You need to hodl 1 Genesis NFT</div></div><div class="ConnectWDividerCTA connectWDividerCTA"><div class="ConnectWFlexRow"><button id="eth" class="ConnectWLastWeek connectWLastWeek" data-address="0x2029ac0e4d7f59c3587636064b4ae60bdd56132c" data-chain="eth" data-numberofneededtokens="1" data-href="screen-3000a845-6b44-4d08-9250-b41a8a221540">Connect Wallet</button></div><div class="ConnectWDivider" src="https://file.rendit.io/n/CEh74J6Ph7HtqAeHvZtW.svg"></div><div class="ConnectWFlexRow"><a class="ConnectWLastWeek1A connectWLastWeek" href="https://opensea.io/assets/ethereum/0x2029ac0e4d7f59c3587636064b4ae60bdd56132c/0" target="_blank" rel="noreferrer"><button class="ConnectWLastWeek1 connectWLastWeek">Buy on OpenSea</button></a></div></div><div id="error-text" class="ConnectWParagraph1 paragP"></div></div><div class="InputFlexRow1 row2"><a href="screen-49c9dad5-9166-478f-b95e-0951774fa6fd.html"><button style="background-color:#fd2064" class="InputLastWeek4 buttonContent">Back</button></a></div></div></div>
+    </body>
+</html>
